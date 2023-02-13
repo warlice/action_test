@@ -9,9 +9,16 @@ on:
    
 
 jobs:
-  deployment:
+  deployment-production:
     runs-on: ubuntu-latest
-    environment: production,staging
+    environment: production
+    steps:
+      - name: deploy
+        # ...deployment-specific steps
+        run: echo Hello, world!  ${{ inputs.build_env_name }}
+  deployment-staging:
+    runs-on: ubuntu-latest
+    environment: staging
     steps:
       - name: deploy
         # ...deployment-specific steps
